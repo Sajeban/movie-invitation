@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-
+import lokahPosterUrl from './assets/lokah-poster.jpg'; 
 function App() {
   const [response, setResponse] = useState(null);
   const [showDetails, setShowDetails] = useState(false);
@@ -34,7 +34,7 @@ function App() {
         {/* Movie Poster Background */}
         <div className="poster-background">
           <img 
-            src={process.env.PUBLIC_URL + "/images/lokah-poster.jpg"} 
+            src={lokahPosterUrl}
             alt="LOKAH Chapter 1 Chandra Movie Poster" 
             className="poster-image"
           />
