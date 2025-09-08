@@ -1,0 +1,383 @@
+.app {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 2;
+}
+
+.invitation-card {
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  background: linear-gradient(145deg, 
+    rgba(20, 20, 20, 0.95) 0%, 
+    rgba(40, 20, 20, 0.95) 50%, 
+    rgba(20, 20, 20, 0.95) 100%);
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 165, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  overflow: hidden;
+}
+
+.poster-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255, 100, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 50, 0, 0.1) 0%, transparent 50%),
+    linear-gradient(45deg, rgba(139, 69, 19, 0.05) 0%, rgba(160, 82, 45, 0.05) 100%);
+  z-index: -1;
+}
+
+.poster-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.15;
+  border-radius: 20px;
+  z-index: -1;
+}
+
+.fire-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at 30% 20%, rgba(255, 140, 0, 0.1) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(255, 69, 0, 0.1) 0%, transparent 60%);
+  animation: flicker 3s ease-in-out infinite alternate;
+}
+
+.smoke-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(100, 100, 100, 0.05) 0%, transparent 70%);
+  animation: smoke 4s ease-in-out infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes smoke {
+  0%, 100% { transform: translateY(0px) scale(1); opacity: 0.3; }
+  50% { transform: translateY(-10px) scale(1.1); opacity: 0.6; }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.presenter {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+.movie-title {
+  font-family: 'Cinzel', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #ffa500;
+  text-shadow: 
+    0 0 10px rgba(255, 165, 0, 0.5),
+    0 0 20px rgba(255, 165, 0, 0.3),
+    0 0 30px rgba(255, 165, 0, 0.1);
+  margin: 10px 0;
+  letter-spacing: 3px;
+  background: linear-gradient(45deg, #ffa500, #ff6b35, #ffa500);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+.main-question {
+  margin: 40px 0;
+  padding: 30px;
+  background: linear-gradient(135deg, 
+    rgba(255, 165, 0, 0.1) 0%, 
+    rgba(255, 100, 0, 0.1) 100%);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 165, 0, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.tamil-text {
+  display: block;
+  font-size: 2.5rem;
+  color: #ffa500;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
+}
+
+.english-text {
+  display: block;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.romantic-message {
+  margin: 30px 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.romantic-message p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.response-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.yes-button, .no-button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 180px;
+  justify-content: center;
+  text-transform: none;
+  letter-spacing: 0.5px;
+}
+
+.yes-button {
+  background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+  color: white;
+  box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+}
+
+.yes-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(255, 107, 107, 0.4);
+  background: linear-gradient(135deg, #ff5252, #ff7979);
+}
+
+.no-button {
+  background: linear-gradient(135deg, #6c757d, #868e96);
+  color: white;
+  box-shadow: 0 10px 20px rgba(108, 117, 125, 0.3);
+}
+
+.no-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(108, 117, 125, 0.4);
+  background: linear-gradient(135deg, #5a6268, #6c757d);
+}
+
+.button-emoji {
+  font-size: 1.3rem;
+}
+
+.success-message, .sad-message {
+  text-align: center;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 20px 0;
+}
+
+.celebration {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.sad-emoji {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.success-message h2, .sad-message h2 {
+  color: #ffa500;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.movie-details {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid rgba(255, 165, 0, 0.2);
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+.detail-value {
+  color: #ffa500;
+  font-weight: 600;
+}
+
+.love-note {
+  color: rgba(255, 255, 255, 0.9);
+  font-style: italic;
+  margin-top: 20px;
+  font-size: 1.1rem;
+}
+
+.retry-button {
+  background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+}
+
+.retry-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+}
+
+.credits {
+  margin-top: 30px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+}
+
+.credit-line {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 2px 0;
+  letter-spacing: 1px;
+}
+
+.year {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .invitation-card {
+    margin: 10px;
+    padding: 30px 20px;
+  }
+  
+  .movie-title {
+    font-size: 2.5rem;
+  }
+  
+  .tamil-text {
+    font-size: 2rem;
+  }
+  
+  .response-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .yes-button, .no-button {
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-title {
+    font-size: 2rem;
+  }
+  
+  .tamil-text {
+    font-size: 1.5rem;
+  }
+  
+  .main-question {
+    padding: 20px;
+  }
+}
