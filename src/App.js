@@ -34,7 +34,7 @@ function App() {
         {/* Movie Poster Background */}
         <div className="poster-background">
           <img 
-            src="/images/lokah-poster.jpg" 
+            src={process.env.PUBLIC_URL + "/images/lokah-poster.jpg"} 
             alt="LOKAH Chapter 1 Chandra Movie Poster" 
             className="poster-image"
           />
