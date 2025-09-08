@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import lokahPosterUrl from './assets/lokah-poster.jpg'; 
+import lokahPosterUrl from './assets/lokah-poster.jpg';
+
 function App() {
+  const [envelopeOpened, setEnvelopeOpened] = useState(false);
+  const [letterRevealed, setLetterRevealed] = useState(false);
   const [response, setResponse] = useState(null);
   const [showDetails, setShowDetails] = useState(false);
+
+  const handleEnvelopeClick = () => {
+    setEnvelopeOpened(true);
+    setTimeout(() => {
+      setLetterRevealed(true);
+    }, 800);
+  };
 
   const handleResponse = (answer) => {
     setResponse(answer);
@@ -21,6 +31,9 @@ function App() {
         <div className="particle"></div>
         <div className="particle"></div>
         <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
       </div>
       
       <div className="hearts">
@@ -28,9 +41,28 @@ function App() {
         <div className="heart">💖</div>
         <div className="heart">💗</div>
         <div className="heart">💝</div>
+        <div className="heart">💞</div>
+        <div className="heart">💟</div>
       </div>
 
-      <div className="invitation-card">
+      {/* Envelope Animation */}
+      {!envelopeOpened && (
+        <div className="envelope-container" onClick={handleEnvelopeClick}>
+          <div className="envelope">
+            <div className="envelope-flap"></div>
+            <div className="envelope-body"></div>
+            <div className="envelope-seal">💌</div>
+          </div>
+          <div className="envelope-instruction">
+            <p>Click to open your special invitation from Saje✨</p>
+          </div>
+        </div>
+      )}
+
+      {/* Letter sliding out animation */}
+      {envelopeOpened && (
+        <div className={`letter-container ${letterRevealed ? 'revealed' : ''}`}>
+          <div className="invitation-card">
         {/* Movie Poster Background */}
         <div className="poster-background">
           <img 
@@ -92,10 +124,6 @@ function App() {
                     <span className="detail-label">🎬 Location:</span>
                     <span className="detail-value">Carnival Cinemas Singapore</span>
                   </div>
-                  <div className="detail-item">
-                    <span className="detail-label">🎭 Movie:</span>
-                    <span className="detail-value">LOKAH: CHAPTER 1 CHANDRA</span>
-                  </div>
                 </div>
               )}
               <p className="love-note">Can't wait to watch the movie with you! </p>
@@ -121,7 +149,9 @@ function App() {
           <div className="credit-line">PRODUCED BY WAYFARER FILMS</div>
           <div className="year">2025</div>
         </div>
-      </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
